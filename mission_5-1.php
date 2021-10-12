@@ -13,6 +13,15 @@
         <input type="submit" name="edit" value="編集"><br>
     </form>
     <?php
+    
+        function is_not_space($str) {
+            $str = preg_replace("/( |　)/", "", $str );
+            if($str == ""){
+                return FALSE;    
+            } else {
+                return TRUE;
+            }
+        }
         //db接続
         $dsn = 'mysql:dbname=tb230560db;host=localhost';
         $user = 'tb-230560';
@@ -77,7 +86,7 @@
     </form>
     <?php
         //submitされたかつコメントが空でないときの処理
-        if(isset($_POST["submit"]) && $_POST["comment"] != ""){
+        if(isset($_POST["submit"]) && is_not_space($_POST["comment"])){
             //変数に格納
             if($_POST["name"] != ""){
                 $name = $_POST["name"];
@@ -123,7 +132,7 @@
         
         
         //submitされたがコメントが空のときの処理
-        if(isset($_POST["submit"]) && $_POST["comment"] == ""){
+        if(isset($_POST["submit"]) or is_not_space($_POST["comment"])){
             echo "コメントを入力してください<br>";
         }
 

@@ -13,15 +13,11 @@
     <?php
         $filename="mission_3-2.txt";
         
-        //最終の番号取得
+        //最新の番号取得
         if(file_exists($filename)){
-            
-            $fp = fopen($filename,"a");
             
             //配列に読み込み
             $lines = file($filename,FILE_IGNORE_NEW_LINES);
-            fclose($fp);
-            
             $latest = explode("<>",$lines[count($lines)-1])[0];
         } else {
             $latest = 0;

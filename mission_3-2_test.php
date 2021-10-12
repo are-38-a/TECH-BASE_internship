@@ -11,7 +11,7 @@
         <input type="submit" name="submit">
     </form>
     <?php
-        $filename="mission_3-2.txt";
+        $filename="mission_3-2_test.txt";
         
         //最終の番号取得
         if(file_exists($filename)){
@@ -27,7 +27,9 @@
             $latest = 0;
         }
             
-        //コメントと名前がPOSTされたときの処理        
+        //コメントと名前がPOSTされたときの処理  
+        
+        
         if(isset($_POST["name"]) && isset($_POST["comment"])){
             
             //コメントが空でないとき書き込み
@@ -45,9 +47,9 @@
             
                 //書き込み
                 $date = date("Y/m/d/ H:i:s");
-                $str = $latest+1 . "<>" . $name . "<>" . $comment . "<>" . $date;
+                $num = count(file($filename,FILE_IGNORE_NEW_LINES));
                 $fp = fopen($filename,"a");
-                fwrite($fp, $str.PHP_EOL);
+                fwrite($fp, $num+1 . "<>" . $name . "<>" . $comment . "<>" . $date . "\n");
                 fclose($fp);
             }
         }
@@ -61,7 +63,8 @@
                 $file_handle = fopen($filename, 'r');
                 
                 while($data = fgets($file_handle) ){
-                    //$exploded_data = explode("<>", $data);
+                    $exploded_data = explode("<>", $data);
+                    var_dump($data);
                     var_dump($exploded_data);
                     echo "番号:".$exploded_data[0]." ";
                     echo "名前:".$exploded_data[1]." ";
