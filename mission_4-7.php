@@ -13,11 +13,11 @@
     </form>
     
     <?php
-        $dsn = 'mysql:dbname=tb230560db;host=localhost';
-        $user = 'tb-230560';
-        $password = '8BBVygfsTu';
+        $dsn = 'mysql:dbname=********;host=localhost';
+        $user = '********';
+        $password = '********';
         $pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
-        
+                
         if(isset($_POST["name"]) && isset($_POST["comment"])){
             $id = 1; //変更する投稿番号
             $name = $_POST["name"];

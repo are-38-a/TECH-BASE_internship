@@ -11,11 +11,11 @@
     </form>
     
     <?php
-        $dsn = 'mysql:dbname=tb230560db;host=localhost';
-        $user = 'tb-230560';
-        $password = '8BBVygfsTu';
+        $dsn = 'mysql:dbname=********;host=localhost';
+        $user = '********';
+        $password = '********';
         $pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
-        
+                
         if(isset($_POST["execute"])){
             $id = 2; //変更する投稿番号
             $sql = 'delete from tbtest where id=:id';

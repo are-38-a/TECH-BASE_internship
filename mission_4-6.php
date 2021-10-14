@@ -12,11 +12,11 @@
     </form>
     
     <?php
-        $dsn = 'mysql:dbname=tb230560db;host=localhost';
-        $user = 'tb-230560';
-        $password = '8BBVygfsTu';
+        $dsn = 'mysql:dbname=********;host=localhost';
+        $user = '********';
+        $password = '********';
         $pdo = new PDO($dsn, $user, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
-        
+                
         if(isset($_POST["name"]) && isset($_POST["comment"])){
             $sql = $pdo -> prepare("INSERT INTO tbtest (name, comment) VALUES (:name, :comment)");
             $sql -> bindParam(':name', $name, PDO::PARAM_STR);
